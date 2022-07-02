@@ -1,0 +1,54 @@
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# 忽略build文件夹
+build/
+.vscode/
+
+# _start
+_*
+
+# .sym
+*.sym
+
+# asm
+*.asm
+
+# paticular
+xv6-labs-2021/user/usys.S
+xv6-labs-2021/user/initcode
+xv6-labs-2021/user/initcode.out
+xv6-labs-2021/kernel/kernel
+xv6-labs-2021/fs.img
+xv6-labs-2021/mkfs/mkfs 
+xv6-labs-2021/.gdbinit 
