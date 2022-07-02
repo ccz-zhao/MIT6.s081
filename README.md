@@ -4,7 +4,7 @@
 
 | **项目** | **时间** | **介绍** |
 | :------- |:--------|:--------|
-| lec01 Introduction and Examples | 22.07.02 | [introduction](https://pdos.csail.mit.edu/6.828/2021/slides/6s081-lec-intro.pdf)<br>[examples](https://pdos.csail.mit.edu/6.828/2021/lec/l-overview/)<br>教材 chapter 1<br>lab: [Xv6 and Unix utilities](https://pdos.csail.mit.edu/6.828/2021/labs/util.html)<br>[lab作业](https://github.com/ccz-zhao/MIT6.s081/tree/lec01)|
+| lec01 Introduction and Examples | 22.07.02 | [introduction](https://pdos.csail.mit.edu/6.828/2021/slides/6s081-lec-intro.pdf)<br>[examples](https://pdos.csail.mit.edu/6.828/2021/lec/l-overview/)<br>教材 chapter 1<br>lab: [Xv6 and Unix utilities](https://pdos.csail.mit.edu/6.828/2021/labs/util.html)<br>[lab作业](https://github.com/ccz-zhao/MIT6.s081/tree/util)|
 
 
 
