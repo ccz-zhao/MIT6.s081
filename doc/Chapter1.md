@@ -55,3 +55,35 @@ ls: cannot access 'nonexists': No such file or directory
 exists:
 found_exists
 ```
+
+## 1.3 Pipes
+
+管道提供了一种进程间通信的方式。
+
+用来处理一对文件描述符数据传输的内核缓冲区。
+
+用于处理临时文件很有优势：
+
+pipeline:
+
+```bash 
+echo hello world | wc
+```
+
+implemented without pipes
+
+```bash
+echo hello world > /tmp/xyz;
+wc < /tmp/xyz
+```
+
+相较于使用临时文件至少有四个优势：
+1. 自动清理临时文件
+2. 可以传输任意长度数据
+3. parallel execution
+4. inter-process communication
+
+## 1.4 File system
+
+## 1.6 Exercises
+
