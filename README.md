@@ -1,19 +1,22 @@
 # MIT6.s081
 
-## **学习进度**
+## OS organization and system calls 
 
-| **项目** | **时间** | **介绍** |
-| :------- |:--------|:--------|
-| lec01 Introduction and Examples | 22.07.02 | [introduction](https://pdos.csail.mit.edu/6.828/2021/slides/6s081-lec-intro.pdf)<br>[examples](https://pdos.csail.mit.edu/6.828/2021/lec/l-overview/)<br>教材 chapter 1<br>lab: [Xv6 and Unix utilities](https://pdos.csail.mit.edu/6.828/2021/labs/util.html)<br>[lab作业](https://github.com/ccz-zhao/MIT6.s081/tree/util)|
+**preparation**:
+
+阅读 [chapter2](doc/Chapter2.md)，xv6 code: [kernel/proc.h](xv6-labs-2021/kernel/proc.h), [kernel/defs.h](xv6-labs-2021/kernel/defs.h), [kernel/entry.S](xv6-labs-2021/kernel/entry.S), [kernel/main.c](xv6-labs-2021/kernel/main.c), [user/initcode.S](xv6-labs-2021/user/initcode.S), [user/init.c](xv6-labs-2021/user/init.c), and skim [kernel/proc.c](xv6-labs-2021/kernel/proc.c) and [kernel/exec.c](xv6-labs-2021/kernel/exec.c)
 
 
+Before you start coding, read Chapter 2 of the xv6 book, and Sections 4.3 and 4.4 of Chapter 4, and related source files:
 
-## **课程资料**
-[课程链接](https://pdos.csail.mit.edu/6.828/2021/schedule.html)
-[课程教程](https://pdos.csail.mit.edu/6.828/2021/xv6/book-riscv-rev2.pdf)
+- The user-space code for systems calls is in user/user.h and user/usys.pl.
+- The kernel-space code is kernel/syscall.h, kernel/syscall.c.
+- The process-related code is kernel/proc.h and kernel/proc.c.
 
-## **学习资料**
+## System call tracing
 
-[bilibili视频](https://www.bilibili.com/video/BV19k4y1C7kA)
+>In this assignment you will add a system call tracing feature that may help you when debugging later labs. You'll create a new trace system call that will control tracing. It should take one argument, an integer "mask", whose bits specify which system calls to trace. For example, to trace the fork system call, a program calls trace(1 << SYS_fork), where SYS_fork is a syscall number from kernel/syscall.h. You have to modify the xv6 kernel to print out a line when each system call is about to return, if the system call's number is set in the mask. The line should contain the process id, the name of the system call and the return value; you don't need to print the system call arguments. The trace system call should enable tracing for the process that calls it and any children that it subsequently forks, but should not affect other processes.
 
-[中文翻译文档](https://mit-public-courses-cn-translatio.gitbook.io/mit6-s081)
+1. Add $U/_trace to UPROGS in Makefile，`make qemu`会失败
+2. 在`user/user.h`添加声明，a stub to user/usys.pl, and a syscall number to kernel/syscall.h.
+3. Add a sys_trace() function in kernel/sysproc.c
