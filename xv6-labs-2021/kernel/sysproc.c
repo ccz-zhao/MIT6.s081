@@ -8,10 +8,6 @@
 #include "proc.h"
 
 uint64
-sys_trace(void)
-{
-}
-uint64
 sys_exit(void)
 {
   int n;

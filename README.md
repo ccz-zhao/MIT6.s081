@@ -17,6 +17,27 @@ Before you start coding, read Chapter 2 of the xv6 book, and Sections 4.3 and 4.
 
 >In this assignment you will add a system call tracing feature that may help you when debugging later labs. You'll create a new trace system call that will control tracing. It should take one argument, an integer "mask", whose bits specify which system calls to trace. For example, to trace the fork system call, a program calls trace(1 << SYS_fork), where SYS_fork is a syscall number from kernel/syscall.h. You have to modify the xv6 kernel to print out a line when each system call is about to return, if the system call's number is set in the mask. The line should contain the process id, the name of the system call and the return value; you don't need to print the system call arguments. The trace system call should enable tracing for the process that calls it and any children that it subsequently forks, but should not affect other processes.
 
-1. Add $U/_trace to UPROGS in Makefile，`make qemu`会失败
-2. 在`user/user.h`添加声明，a stub to user/usys.pl, and a syscall number to kernel/syscall.h.
-3. Add a sys_trace() function in kernel/sysproc.c
+1. 添加 _trace 编译选项
+
+`Makefile` 文件 196 行添加 `$U/_trace\`，执行 `make qemu`
+
+![](img/make_qemu.png)
+
+user/trace.c 报错，因为还没有 trace 系统调用（system call）
+
+在user/user.h 添加 trace 的前置声明
+
+![](img/user-h-trace.png)
+
+在user/usys.pl 添加 trace，usys.pl 用于生成 usys.S 代码
+
+![](img/usys-pl-trace.png)
+
+在 kernel/syscall.h 添加 trace 的系统调用号码，用于 usys.S 进行实际调用。
+
+![](img/Screenshot%20from%202022-08-13%2021-46-40.png)
+
+完成后执行`make qemu`即可完成编译，但是由于实际的trace还未完成，所以当使用trace时，会发生错误。
+
+![](img/trace-fail.png)
+
